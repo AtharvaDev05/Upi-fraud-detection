@@ -125,9 +125,3 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - **Model Comparison Matrix (`/models`):** Full 5-model empirical comparison table, PR-AUC curves, radar charts, and training/inference latency tradeoffs.
 - **Confusion Matrix & KPIs (`/metrics`):** Breakdown of the 41,643 held-out test predictions (TP=1,638, FP=5, TN=39,995, FN=5) with plain-language banking risk explanations.
 - **Research & Literature (`/insights`):** 5 landmark peer-reviewed papers (Vanini, Chang, Raj, Zhou, Lin & Gao), 10 systematic research gaps, and 6 empirical Research Questions.
-
----
-
-## 7. Viva Defense & Examination Guide
-Examiner defense notes, top 10 viva questions, and metric cheat-sheets are available in:
-📁 `_archive/viva_defense_pack.md`

@@ -73,7 +73,7 @@ const PAPERS: Paper[] = [
 const RESEARCH_GAPS = [
   {
     id: "GAP-1",
-    title: "Limited Real UPI Data",
+    title: "Explicit Declaration of Synthetic Data Baseline (PaySim)",
     problem: "Real banking transactions are strictly confidential under banking privacy regulations (RBI norms / GDPR); many studies use synthetic sets without declaring domain boundaries.",
     approach: "Explicitly declare simulator baseline, translate PaySim fields to UPI P2P/P2M semantics, and state operational domain boundaries.",
   },

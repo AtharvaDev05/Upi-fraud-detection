@@ -1,0 +1,202 @@
+[
+  {
+    "case_id": "clear_fraud",
+    "title": "High-Value Account Takeover",
+    "ground_truth": "FRAUD",
+    "predicted_score_pct": 99.98,
+    "risk_level": "HIGH",
+    "raw_inputs": {
+      "step": 145,
+      "amount": 66448.19,
+      "senderOldBalance": 66448.19,
+      "senderNewBalance": 0.0,
+      "receiverOldBalance": 5042513.19,
+      "receiverNewBalance": 5108961.38,
+      "type": "TRANSFER",
+      "senderId": "C912363751",
+      "receiverId": "C502097233"
+    },
+    "top_shap_contributions": [
+      {
+        "feature": "error_orig",
+        "shap_impact": 7.1271
+      },
+      {
+        "feature": "newbalanceOrig",
+        "shap_impact": 1.752
+      },
+      {
+        "feature": "orig_emptied",
+        "shap_impact": 0.2761
+      },
+      {
+        "feature": "ratio_orig",
+        "shap_impact": -0.2272
+      },
+      {
+        "feature": "is_high_risk_type",
+        "shap_impact": 0.2098
+      }
+    ]
+  },
+  {
+    "case_id": "clear_legitimate",
+    "title": "Everyday Low-Risk Payment",
+    "ground_truth": "LEGITIMATE",
+    "predicted_score_pct": 0.02,
+    "risk_level": "LOW",
+    "raw_inputs": {
+      "step": 588,
+      "amount": 4730.76,
+      "senderOldBalance": 2135.0,
+      "senderNewBalance": 0.0,
+      "receiverOldBalance": 0.0,
+      "receiverNewBalance": 0.0,
+      "type": "PAYMENT",
+      "senderId": "C209055573",
+      "receiverId": "M991267787"
+    },
+    "top_shap_contributions": [
+      {
+        "feature": "error_orig",
+        "shap_impact": -4.2613
+      },
+      {
+        "feature": "is_high_risk_type",
+        "shap_impact": -3.7528
+      },
+      {
+        "feature": "ratio_orig",
+        "shap_impact": -0.7835
+      },
+      {
+        "feature": "step",
+        "shap_impact": -0.5753
+      },
+      {
+        "feature": "newbalanceOrig",
+        "shap_impact": 0.4088
+      }
+    ]
+  },
+  {
+    "case_id": "subtle_fraud",
+    "title": "Subtle Balance Discrepancy Fraud",
+    "ground_truth": "FRAUD",
+    "predicted_score_pct": 99.98,
+    "risk_level": "HIGH",
+    "raw_inputs": {
+      "step": 415,
+      "amount": 37766.23,
+      "senderOldBalance": 37766.23,
+      "senderNewBalance": 0.0,
+      "receiverOldBalance": 2344708.27,
+      "receiverNewBalance": 2382474.5,
+      "type": "TRANSFER",
+      "senderId": "C751841813",
+      "receiverId": "C059876005"
+    },
+    "top_shap_contributions": [
+      {
+        "feature": "error_orig",
+        "shap_impact": 7.4903
+      },
+      {
+        "feature": "newbalanceOrig",
+        "shap_impact": 1.7401
+      },
+      {
+        "feature": "step",
+        "shap_impact": -0.3884
+      },
+      {
+        "feature": "orig_emptied",
+        "shap_impact": 0.275
+      },
+      {
+        "feature": "is_high_risk_type",
+        "shap_impact": 0.1854
+      }
+    ]
+  },
+  {
+    "case_id": "borderline_review",
+    "title": "False Positive / High-Value Transfer",
+    "ground_truth": "LEGITIMATE",
+    "predicted_score_pct": 86.92,
+    "risk_level": "HIGH",
+    "raw_inputs": {
+      "step": 33,
+      "amount": 348201.9,
+      "senderOldBalance": 0.0,
+      "senderNewBalance": 0.0,
+      "receiverOldBalance": 0.0,
+      "receiverNewBalance": 348201.9,
+      "type": "TRANSFER",
+      "senderId": "C455148648",
+      "receiverId": "C181035957"
+    },
+    "top_shap_contributions": [
+      {
+        "feature": "error_orig",
+        "shap_impact": -5.1085
+      },
+      {
+        "feature": "ratio_orig",
+        "shap_impact": 2.5075
+      },
+      {
+        "feature": "ratio_dest",
+        "shap_impact": 2.4344
+      },
+      {
+        "feature": "step",
+        "shap_impact": 0.6394
+      },
+      {
+        "feature": "newbalanceOrig",
+        "shap_impact": 0.5807
+      }
+    ]
+  },
+  {
+    "case_id": "dormant_account",
+    "title": "Dormant Recipient Liquidation",
+    "ground_truth": "FRAUD",
+    "predicted_score_pct": 99.98,
+    "risk_level": "HIGH",
+    "raw_inputs": {
+      "step": 601,
+      "amount": 98099.07,
+      "senderOldBalance": 98099.07,
+      "senderNewBalance": 0.0,
+      "receiverOldBalance": 0.0,
+      "receiverNewBalance": 98099.07,
+      "type": "TRANSFER",
+      "senderId": "C328960379",
+      "receiverId": "C047218649"
+    },
+    "top_shap_contributions": [
+      {
+        "feature": "error_orig",
+        "shap_impact": 7.1265
+      },
+      {
+        "feature": "newbalanceOrig",
+        "shap_impact": 1.7388
+      },
+      {
+        "feature": "step",
+        "shap_impact": -0.5115
+      },
+      {
+        "feature": "orig_emptied",
+        "shap_impact": 0.2788
+      },
+      {
+        "feature": "is_high_risk_type",
+        "shap_impact": 0.2104
+      }
+    ]
+  }
+]

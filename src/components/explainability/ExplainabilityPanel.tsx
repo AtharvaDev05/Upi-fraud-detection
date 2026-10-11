@@ -289,8 +289,10 @@ export function ExplainabilityPanel({ analysis }: { analysis: RiskAnalysis }) {
                     Confidence Calibrator
                   </span>
                   <p className="mt-1 font-mono text-xs text-foreground">
-                    {(analysis.confidence * 100).toFixed(1)}% (Brier Score
-                    Optimised)
+                    {(analysis.confidence > 1
+                      ? analysis.confidence
+                      : analysis.confidence * 100
+                    ).toFixed(1)}% (Brier Score Optimised)
                   </p>
                 </div>
               </div>
@@ -299,25 +301,46 @@ export function ExplainabilityPanel({ analysis }: { analysis: RiskAnalysis }) {
 
           {activeTab === "FACTORS" && (
             <div className="space-y-3">
-              <div className="rounded-lg border border-emerald-500/30 bg-emerald-950/20 p-4">
-                <div className="flex items-center gap-2 text-emerald-400">
-                  <CheckCircle2 className="h-4 w-4" />
-                  <span className="text-xs font-bold">
-                    Positive Dampeners (Mitigating Context)
-                  </span>
+              {analysis.positiveFactors && analysis.positiveFactors.length > 0 ? (
+                <div className="rounded-lg border border-emerald-500/30 bg-emerald-950/20 p-4">
+                  <div className="flex items-center gap-2 text-emerald-400">
+                    <CheckCircle2 className="h-4 w-4" />
+                    <span className="text-xs font-bold">
+                      Positive Dampeners (Mitigating Context)
+                    </span>
+                  </div>
+                  <p className="mt-1 text-xs text-muted">
+                    The following signals lowered the final risk score:
+                  </p>
+                  <ul className="mt-3 space-y-2 text-xs text-slate-300">
+                    {analysis.positiveFactors.map((factor, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                        <span>{factor}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="mt-1 text-xs text-muted">
-                  The following signals lowered the final risk score:
-                </p>
-                <ul className="mt-3 space-y-2 text-xs text-slate-300">
-                  {analysis.positiveFactors?.map((factor, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
-                      <span>{factor}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              ) : (
+                <div className="rounded-lg border border-rose-500/30 bg-rose-950/20 p-4">
+                  <div className="flex items-center gap-2 text-rose-400">
+                    <AlertTriangle className="h-4 w-4" />
+                    <span className="text-xs font-bold">
+                      No Compensating Mitigations (Pure Unmitigated Risk)
+                    </span>
+                  </div>
+                  <p className="mt-1.5 text-xs leading-relaxed text-slate-300">
+                    Zero trust anchors or risk-dampening factors were detected for this transaction. 
+                    Every evaluated feature pushes toward unauthorized balance extraction (total account drain, 
+                    unbacked counterparty, nocturnal window). Because no mitigating factors exist to counterbalance 
+                    these signals, the model assigns maximum confidence to an immediate transaction hold / block.
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 text-[11px] font-mono text-rose-300/80 bg-rose-950/40 p-2.5 rounded border border-rose-500/20">
+                    <ShieldAlert className="h-3.5 w-3.5 shrink-0 text-rose-400" />
+                    <span>Regulatory Directive: Full settlement freeze mandated under RBI Digital Payment Security Controls.</span>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

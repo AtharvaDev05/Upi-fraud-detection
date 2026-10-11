@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, UserRound } from "lucide-react";
+import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const TITLES: Record<string, string> = {
@@ -38,13 +38,6 @@ export function TopBar({ onMenu }: { onMenu: () => void }) {
         <span className="rounded-full border border-emerald-500/30 bg-emerald-950/30 px-2.5 py-1 text-[11px] font-medium text-emerald-300">
           XGBoost + TreeSHAP · Live
         </span>
-        <button
-          type="button"
-          className="rounded-full border border-border p-2 text-muted"
-          aria-label="Profile and settings"
-        >
-          <UserRound className="h-4 w-4" />
-        </button>
       </div>
     </header>
   );
